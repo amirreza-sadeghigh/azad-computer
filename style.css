@@ -1,0 +1,66 @@
+body {
+  background-color: #f5f7fa;
+  font-family: Questrial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+}
+
+.Progress-Container {
+  width: 60%;
+  background: #ccc;
+  height: 20px;
+  border-radius: 15px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.Progress-Bar {
+  background: dodgerblue;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.terms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.term {
+  background: #fff;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.term h1 {
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+.term table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.term th, .term td {
+  border: 1px solid #000;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+/* responsive for mobile */
+@media (max-width: 900px) {
+  .terms {
+    grid-template-columns: 1fr;
+  }
+}
