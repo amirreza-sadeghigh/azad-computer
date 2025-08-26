@@ -9,7 +9,8 @@ h2 {
 
 .Progress-Container {
   width: 60%;
-  background: #ccc;
+  background-color: #e5e7eb; /* light gray background */
+  position: relative;
   height: 20px;
   border-radius: 15px;
   margin: 20px auto;
@@ -17,8 +18,13 @@ h2 {
 }
 
 .Progress-Bar {
-  background: dodgerblue;
+  position: absolute;
+  left: 0;
+  top: 0;
   height: 100%;
+  width: 0%;
+  background-color: #1976d2; /* blue fill */
+  transition: width 0.35s ease;
   display: flex;
   align-items: center;
   padding-left: 8px;
@@ -50,14 +56,54 @@ h2 {
 .term table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .term th, .term td {
   border: 1px solid #000;
   padding: 8px 12px;
   text-align: center;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+  transform-origin: center;
 }
 
+.term td:hover,
+.term th:hover {
+  transform: scale(1.03);
+  background-color: #1976d2 ;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.12) inset;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+button{
+  color: black;
+}
+
+/* Bar fills from left; no text inside it */
+.Progress-Bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #1976d2;
+  transition: width 0.35s ease;
+  display: block;          /* override any previous flex */
+}
+
+/* Fixed, centered % label that never moves with the fill */
+.Progress-Label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  color: #0f172a;          /* dark text over the gray track */
+  pointer-events: none;    /* clicks pass through */
+  user-select: none;
+}
 /* responsive for mobile */
 @media (max-width: 900px) {
   .terms {
