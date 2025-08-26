@@ -104,6 +104,118 @@ button{
   pointer-events: none;    /* clicks pass through */
   user-select: none;
 }
+/* ---------- Apple-ish controls ---------- */
+
+/* Reset */
+.progress-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 0 16px;
+  direction: rtl; /* Persian layout */
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+  Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Visually hidden but accessible label */
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Input: frosted, precise, with subtle inner shadow */
+.credit-input {
+  appearance: none;
+  -moz-appearance: textfield; /* remove spinners in Firefox */
+  width: 160px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.72);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.6),
+    0 1px 2px rgba(0,0,0,0.06);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  font-size: 15px;
+  line-height: 40px;
+  color: #0f172a;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .06s ease;
+}
+
+.credit-input::placeholder { color: rgba(15,23,42,0.45); }
+.credit-input::-webkit-outer-spin-button,
+.credit-input::-webkit-inner-spin-button { appearance: none; margin: 0; }
+
+.credit-input:hover {
+  border-color: rgba(0,0,0,0.18);
+}
+
+.credit-input:focus {
+  outline: none;
+  border-color: #0a84ff;
+  box-shadow:
+    0 0 0 3px rgba(10,132,255,0.18),
+    inset 0 0 0 1px rgba(10,132,255,0.35);
+}
+
+/* Button: pill, subtle gradient, crisp shadow, micro-interactions */
+.update-btn {
+  height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, #1e90ff 0%, #0a84ff 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .2px;
+  box-shadow:
+    0 8px 16px rgba(16,112,255,0.24),
+    0 2px 4px rgba(0,0,0,0.06);
+  transition: transform .06s ease, box-shadow .2s ease, filter .2s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.update-btn:hover {
+  filter: brightness(1.03);
+  box-shadow:
+    0 10px 20px rgba(16,112,255,0.28),
+    0 3px 6px rgba(0,0,0,0.08);
+}
+
+.update-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 6px 12px rgba(16,112,255,0.22),
+    0 2px 4px rgba(0,0,0,0.06);
+}
+
+.update-btn:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(10,132,255,0.22),
+    0 8px 16px rgba(16,112,255,0.24);
+}
+
+/* Compact layout on small screens */
+@media (max-width: 520px) {
+  .credit-input { width: 100%; }
+  .progress-controls { gap: 10px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .credit-input, .update-btn { transition: none; }
+}
 /* responsive for mobile */
 @media (max-width: 900px) {
   .terms {
